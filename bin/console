@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "spotify"
+
+# Load environment variables from .env file
+require 'dotenv/load'
+
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use a different console, if you like.
+
+# (If you use this, don't forget to add pry to your Gemfile!)
+# require "pry"
+# Pry.start
+
+# @oauth = Spotify::OAuth.new(client_id: ENV["SPOTIFY_CLIENT_ID"], client_secret: ENV["SPOTIFY_CLIENT_SECRET"])
+
+@client = Spotify::Client.new(client_id: ENV["SPOTIFY_CLIENT_ID"], access_token: ENV["SPOTIFY_ACCESS_TOKEN"])
+
+@clientapp = Spotify::Client.new(client_id: ENV["SPOTIFY_CLIENT_ID"], access_token: ENV["SPOTIFY_APP_ACCESS_TOKEN"])
+
+require "irb"
+IRB.start(__FILE__)
