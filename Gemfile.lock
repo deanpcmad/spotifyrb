@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spotifyrb (1.4.0)
+    spotifyrb (0.1.0)
       faraday (~> 2.0)
 
 GEM
