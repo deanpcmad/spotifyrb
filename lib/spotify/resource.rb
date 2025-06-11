@@ -29,6 +29,7 @@ module Spotify
     end
 
     def handle_response(response)
+      return true if response.status == 200
       return true if response.status == 204
       return response unless error?(response)
 
