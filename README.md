@@ -1,6 +1,6 @@
 # SpotifyRB
 
-SpotifyRB is the easiest and most complete Ruby library for the [Spotify Helix API](https://dev.spotify.tv/docs/api).
+SpotifyRB is the easiest and most complete Ruby library for the [Spotify API](https://developer.spotify.com/documentation/web-api).
 
 ## Installation
 
@@ -16,10 +16,10 @@ gem "spotifyrb"
 
 Firstly you'll need to set a Client ID and an Access Token.
 
-An access token is required because the Helix API requires authentication.
+An access token is required because the Spotify API requires authentication.
 
 ```ruby
-@client = Spotify::Client.new(client_id: "abc123", access_token: "xyz123")
+@client = Spotify::Client.new(access_token: "xyz123")
 ```
 
 ### Resources

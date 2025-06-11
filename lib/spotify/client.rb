@@ -2,160 +2,39 @@ module Spotify
   class Client
     BASE_URL = "https://api.spotify.com/v1"
 
-    attr_reader :client_id, :access_token, :adapter
+    attr_reader :access_token, :adapter
 
-    def initialize(client_id:, access_token:, adapter: Faraday.default_adapter)
-      @client_id = client_id
+    def initialize(access_token:, adapter: Faraday.default_adapter)
       @access_token = access_token
       @adapter = adapter
     end
 
-    def users
-      UsersResource.new(self)
-    end
-
-    def channels
-      ChannelsResource.new(self)
-    end
-
-    def emotes
-      EmotesResource.new(self)
-    end
-
-    def badges
-      BadgesResource.new(self)
-    end
-
-    def games
-      GamesResource.new(self)
-    end
-
-    def videos
-      VideosResource.new(self)
-    end
-
-    def clips
-      ClipsResource.new(self)
-    end
-
-    def eventsub_subscriptions
-      EventsubSubscriptionsResource.new(self)
-    end
-
-    def eventsub_conduits
-      EventsubConduitsResource.new(self)
-    end
-
-    def banned_events
-      BannedEventsResource.new(self)
-    end
-
-    def banned_users
-      BannedUsersResource.new(self)
-    end
-
-    def moderators
-      ModeratorsResource.new(self)
-    end
-
-    def moderator_events
-      ModeratorEventsResource.new(self)
-    end
-
-    def polls
-      PollsResource.new(self)
-    end
-
-    def predictions
-      PredictionsResource.new(self)
-    end
-
-    def stream_schedule
-      StreamScheduleResource.new(self)
+    def me
+      MeResource.new(self)
     end
 
     def search
       SearchResource.new(self)
     end
 
-    def streams
-      StreamsResource.new(self)
+    def player
+      PlayerResource.new(self)
     end
 
-    def stream_markers
-      StreamMarkersResource.new(self)
+    def users
+      UsersResource.new(self)
     end
 
-    def subscriptions
-      SubscriptionsResource.new(self)
+    def albums
+      AlbumsResource.new(self)
     end
 
-    def tags
-      TagsResource.new(self)
+    def artists
+      ArtistsResource.new(self)
     end
 
-    def custom_rewards
-      CustomRewardsResource.new(self)
-    end
-
-    def custom_reward_redemptions
-      CustomRewardRedemptionsResource.new(self)
-    end
-
-    def goals
-      GoalsResource.new(self)
-    end
-
-    def hype_train_events
-      HypeTrainEventsResource.new(self)
-    end
-
-    def announcements
-      AnnouncementsResource.new(self)
-    end
-
-    def raids
-      RaidsResource.new(self)
-    end
-
-    def chat_messages
-      ChatMessagesResource.new(self)
-    end
-
-    def vips
-      VipsResource.new(self)
-    end
-
-    def whispers
-      WhispersResource.new(self)
-    end
-
-    def automod
-      AutomodResource.new(self)
-    end
-
-    def blocked_terms
-      BlockedTermsResource.new(self)
-    end
-
-    def charity_campaigns
-      CharityCampaignsResource.new(self)
-    end
-
-    def chatters
-      ChattersResource.new(self)
-    end
-
-    def shoutouts
-      ShoutoutsResource.new(self)
-    end
-
-    def unban_requests
-      UnbanRequestsResource.new(self)
-    end
-
-    def warnings
-      WarningsResource.new(self)
+    def playlists
+      PlaylistsResource.new(self)
     end
 
     def connection
@@ -163,8 +42,7 @@ module Spotify
         conn.request :authorization, :Bearer, access_token
 
         conn.headers = {
-          "User-Agent" => "spotifyrb/v#{VERSION} (github.com/deanpcmad/spotifyrb)",
-          "Client-ID": client_id
+          "User-Agent" => "spotifyrb/v#{VERSION} (github.com/deanpcmad/spotifyrb)"
         }
 
         conn.request :json

@@ -1,13 +1,13 @@
 module Spotify
   class UsersResource < Resource
-    def me
-      response = get_request("me")
+    def get(id:)
+      response = get_request("users/#{id}")
       User.new response.body
     end
 
-    def retrieve(id:)
-      response = get_request("users/#{id}")
-      User.new response.body
+    def playlists(id:, **params)
+      response = get_request("users/#{id}/playlists", params: params)
+      Collection.from_response(response, type: Playlist, key: "items")
     end
   end
 end
