@@ -21,6 +21,7 @@ module Spotify
   autoload :AlbumsResource, "spotify/resources/albums"
   autoload :ArtistsResource, "spotify/resources/artists"
   autoload :PlaylistsResource, "spotify/resources/playlists"
+  autoload :TracksResource, "spotify/resources/tracks"
 
   autoload :User, "spotify/objects/user"
   autoload :Album, "spotify/objects/album"
