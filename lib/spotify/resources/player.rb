@@ -42,5 +42,15 @@ module Spotify
       response = post_request("me/player/previous", body: { device_id: device }.compact)
       response.success?
     end
+
+    def queue
+      response = get_request("me/player/queue")
+      Collection.from_response(response, type: Track, key: "queue")
+    end
+
+    def add_to_queue(uri:, device: nil)
+      response = post_request("me/player/queue?uri=#{uri}&device=#{device}", body: nil)
+      response.success?
+    end
   end
 end
