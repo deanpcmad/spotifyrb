@@ -6,7 +6,7 @@ module Spotify
     end
     def get(id:, **params)
       response = get_request("tracks/#{id}", params: params)
-      Playlist.new response.body
+      Track.new response.body
     end
   end
 end
